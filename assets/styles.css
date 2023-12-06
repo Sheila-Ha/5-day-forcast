@@ -1,0 +1,10 @@
+
+h1 {
+  font-size: 60px;
+}
+
+.navbar {
+  flex-wrap: wrap;
+  background: darkolivegreen;
+  font-family: k;
+}

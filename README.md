@@ -2,7 +2,7 @@
 
 
 ## Description
-  - You are going to experience a 5 day weather dashboard that will run in the browser along with using html and css. 
+  - You are going to experience a 5 day weather dashboard that will run in the browser 
 
     
 
@@ -58,6 +58,7 @@
   
 
 ## Built with and deployed with:
+  - API
   - Jquery
   - JavaScript
   - HTML
