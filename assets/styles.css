@@ -6,5 +6,6 @@ h1 {
 .navbar {
   flex-wrap: wrap;
   background: darkolivegreen;
-  font-family: k;
+  /*using a google font and sans-serif is a fall back if kanit is not working*/
+  font-family: Kanit, sans-serif ;
 }
