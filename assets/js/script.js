@@ -8,18 +8,19 @@ var searchBtn = document.querySelector('.search-btn');
 
 //add event listener
 searchBtn.addEventListener('click', function() {
-  featchWeatherApi();
+  fetchWeatherApi();
 })
 
-function gitApi() {
+function fetchWeatherApi() {
   //fetch request
   var requestURL = 'https://home.openweathermap.org/api_keys';
 
   fetch(requestURL)
-    .then(function (response) {
+    .then(function(response) {
       return response.jason();
     })
-    .then(function (data) {
-      console.log(data)
+    .then(function(data) {
+      //console.log(data)
+      fetchWeatherWithLatLon(data);
     })
 }
