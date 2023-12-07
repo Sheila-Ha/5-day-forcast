@@ -3,4 +3,4 @@
 
 
 var APIKey="8d43b91350520bddbdbe05651cf109c0";
-var quearyURL="https://home.openweathermap.org/api_keys"
+var queryURL="https://home.openweathermap.org/api_keys"

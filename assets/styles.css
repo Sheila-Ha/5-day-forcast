@@ -1,11 +1,34 @@
+:root {
+  --mustard:#797241d7;
+  --dk-green:#556b2f;
+  --grey: #808080;
+}
+
+::after, ::before {
+  box-sizing: boarder-box;
+}
+
+body {
+  background-color: var(--mustard);
+}
 
 h1 {
   font-size: 60px;
+  background: var(--grey);
 }
 
 .navbar {
   flex-wrap: wrap;
-  background: darkolivegreen;
+  
   /*using a google font and sans-serif is a fall back if kanit is not working*/
   font-family: Kanit, sans-serif ;
+}
+
+.row {
+  background-color: orange;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 2 rem;
+  margin-left: 2 rem;
+
 }
