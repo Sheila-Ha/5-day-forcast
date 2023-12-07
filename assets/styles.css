@@ -1,22 +1,31 @@
+* {
+  box-sizing: border-box;
+  /* margin: 0;
+  padding: 0; */
+}
 :root {
   --mustard:#797241d7;
   --dk-green:#556b2f;
   --grey: #808080;
 }
 
-::after, ::before {
+/* ::after, ::before {
   box-sizing: boarder-box;
-}
+} */
 
 body {
   background-color: var(--mustard);
 }
 
 h1 {
-  font-size: 60px;
+  font-size: 75px;
   background: var(--grey);
 }
 
+h2 {
+  font-size: 40px;
+  margin: 0 60px;
+}
 .navbar {
   flex-wrap: wrap;
   
@@ -28,7 +37,13 @@ h1 {
   background-color: orange;
   display: flex;
   flex-wrap: wrap;
-  margin-right: 2 rem;
-  margin-left: 2 rem;
+}
 
+.right-panel {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row-search {
+  display
 }

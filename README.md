@@ -28,6 +28,10 @@
 
   * A afdsdf
 
+## Errors to navigate
+  - Google font error
+    ![Alt text](assets/images/googlefont_error.png)
+
 ## Installation:
   - ### Create a new repo on GitHub
       - Go to the upper right corner and click the + icon to create a New Repository
