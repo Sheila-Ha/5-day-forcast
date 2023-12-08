@@ -29,23 +29,52 @@ searchBtn.addEventListener("click", function(event) {
   //submit to local storage
   localStorage.setItem("city", JSON.stringify(cityLocation));
   //loadCityLocation();
-  var result = fetchWeatherApi(userCity.city).then(function(result) {
-    //console.log(result);
-    displayWeather(result);
+  var weatherInfo = {
+    currentWeather: [],
+    futureWeather: []
+  };
+  //fetching forecast weather for current city
+  fetchWeatherForecastApi(userCity.city).then(function(result) {
+    weatherInfo.futureWeather = result;
+    
+    var latitude = result.city.coord.lat;
+    var longitude = result.city.coord.lon;
+
+    //fetching current weather for city
+    fetchCurrentWeatherApi(latitude, longitude).then(function(result) {
+      weatherInfo.currentWeather = result;
+      
+      displayWeather(weatherInfo);
+    });
+
   });
 });
 
-async function fetchWeatherApi(city) {
+async function fetchWeatherForecastApi(city) {
   //fetch request
   var requestURL = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=8d43b91350520bddbdbe05651cf109c0`;
   var response = await fetch(requestURL);
   var result = await response.json();
   return result;
 }
-//display weather on screen
-function displayWeather(weatherData){
-  // console.log(weatherData);
-  $(weatherData.list).each(function(){
-    console.log(this);
+
+async function fetchCurrentWeatherApi(latitude, longitude) {
+  //fetch request
+  var requestURL = `https://api.openweathermap.org/data/2.5/weather?lat=${encodeURIComponent(latitude)}&lon=${encodeURIComponent(longitude)}&appid=6d60041c25e2a27c932aebc09b988073`
+  var response = await fetch(requestURL);
+  var result = await response.json();
+  return result;
+}
+//display current weather
+function displayWeather(weatherInfo){
+  // Current
+  console.log('CURRENT');
+  console.log(weatherInfo.currentWeather);
+  var windSpeed = weatherInfo.currentWeather.wind.speed;
+  console.log(windSpeed);
+  // Future
+  console.log('FUTURE');
+  $(weatherInfo.futureWeather.list).each(function(){
+    //console.log(this);
   });
 }
