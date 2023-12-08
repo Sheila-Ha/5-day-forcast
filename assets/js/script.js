@@ -25,7 +25,6 @@ function fetchWeatherApi(city) {
 searchBtn.addEventListener("click", function(event) {
   event.preventDefault();
   //create user initials from submission
-  //clear out city once submitted
   var inputSection = document.querySelector("#city-search");
   var cityInput = inputSection.value.trim();
   var userCity = {
@@ -33,7 +32,9 @@ searchBtn.addEventListener("click", function(event) {
   }
   console.log(userCity);
 
-  userCity.value = ""
+  //clear out city once submitted
+  inputSection.value = "";
+
   //load city look up history
   cityLocation = JSON.parse(localStorage. getItem('city'));
     if(userCity == null){
