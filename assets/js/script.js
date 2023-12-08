@@ -16,7 +16,7 @@ searchBtn.addEventListener("click", function(event) {
   var userCity = {
     city: cityInput
   }
-  //console.log(userCity);
+  console.log(userCity);
 
   //clear out city once submitted
   inputSection.value = "";
@@ -60,7 +60,7 @@ async function fetchWeatherForecastApi(city) {
 
 async function fetchCurrentWeatherApi(latitude, longitude) {
   //fetch request
-  var requestURL = `https://api.openweathermap.org/data/2.5/weather?lat=${encodeURIComponent(latitude)}&lon=${encodeURIComponent(longitude)}&appid=6d60041c25e2a27c932aebc09b988073`
+  var requestURL = `https://api.openweathermap.org/data/2.5/weather?lat=${encodeURIComponent(latitude)}&lon=${encodeURIComponent(longitude)}&units=imperial&appid=6d60041c25e2a27c932aebc09b988073`
   var response = await fetch(requestURL);
   var result = await response.json();
   return result;
@@ -71,9 +71,16 @@ function displayWeather(weatherInfo){
   console.log('CURRENT');
   console.log(weatherInfo.currentWeather);
   var windSpeed = weatherInfo.currentWeather.wind.speed;
-  console.log(windSpeed);
+  //console.log(windSpeed);
+  var humidity = weatherInfo.currentWeather.main.humidity;
+  //current temp
+  var temp = weatherInfo.currentWeather.main.temp;
+  console.log(temp);
+  //current city
+  var city = weatherInfo.currentWeather.name;
+  console.log(city);
   // Future
-  console.log('FUTURE');
+  //console.log('FUTURE');
   $(weatherInfo.futureWeather.list).each(function(){
     //console.log(this);
   });
