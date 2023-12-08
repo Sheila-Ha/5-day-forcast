@@ -19,17 +19,22 @@
    <header>
       <h1>5 Day Weather Forecast</h1>
    </header>
-    <label for="city-search">City Search:</label>
-    <input type="search" id="city-search" name="https://home.openweathermap.org/api_keys"/>
-    <button class="search-btn">Search</button>
-   
-   <div class="weather-info">
-      <div class="cards-container">
-         <figure class="city-card"></figure>
+   <div class="row">
+      <!--search form-->
+      <div class="col-3">
+         <label for="city-search">City Search:</label>
+         <input type="search" id="city-search" name="https://home.openweathermap.org/api_keys"/>
+         <button class="search-btn">Search</button>     
+      </div>
+      <!--search results-->
+      <div class="col-9">
+         <div id="current">
+         </div>
+         <div id="future"></div>
       </div>
    </div>
+   
 
-   <div id="5-day" class="columns"></div>
 
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
    <script src="assets/js/script.js"></script>

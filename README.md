@@ -80,7 +80,7 @@
 ## Credits:
 The guide used:
  - [request-response](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys)
-
+ - [font-awesome](https://fontawesome.com/search?q=cloud&o=r)
 
 
 ## License:

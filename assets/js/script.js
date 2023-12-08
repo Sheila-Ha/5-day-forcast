@@ -79,6 +79,7 @@ function displayWeather(weatherInfo){
   //current city
   var city = weatherInfo.currentWeather.name;
   console.log(city);
+  var icon = 'https://openweathermap.org/img/wn/' + weatherInfo.currentWeather.weather[0].icon + '@2x.png';
   // Future
   //console.log('FUTURE');
   $(weatherInfo.futureWeather.list).each(function(){
