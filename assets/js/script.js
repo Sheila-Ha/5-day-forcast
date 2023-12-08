@@ -7,20 +7,6 @@
 var searchBtn = document.querySelector('.search-btn');
 
 
-function fetchWeatherApi(city) {
-  //fetch request
-  var requestURL = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=8d43b91350520bddbdbe05651cf109c0`;
-
-
-  fetch(requestURL)
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      console.log(data)
-      //fetchWeatherWithLatLon(data);
-    })
-}
 
 searchBtn.addEventListener("click", function(event) {
   event.preventDefault();
@@ -30,7 +16,7 @@ searchBtn.addEventListener("click", function(event) {
   var userCity = {
     city: cityInput
   }
-  console.log(userCity);
+  //console.log(userCity);
 
   //clear out city once submitted
   inputSection.value = "";
@@ -43,6 +29,23 @@ searchBtn.addEventListener("click", function(event) {
   //submit to local storage
   localStorage.setItem("city", JSON.stringify(cityLocation));
   //loadCityLocation();
-  var result = fetchWeatherApi(userCity.city);
-  console.log(result);
+  var result = fetchWeatherApi(userCity.city).then(function(result) {
+    //console.log(result);
+    displayWeather(result);
   });
+});
+
+async function fetchWeatherApi(city) {
+  //fetch request
+  var requestURL = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=8d43b91350520bddbdbe05651cf109c0`;
+  var response = await fetch(requestURL);
+  var result = await response.json();
+  return result;
+}
+//display weather on screen
+function displayWeather(weatherData){
+  // console.log(weatherData);
+  $(weatherData.list).each(function(){
+    console.log(this);
+  });
+}
