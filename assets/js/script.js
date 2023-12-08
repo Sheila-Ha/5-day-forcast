@@ -6,21 +6,42 @@
 
 var searchBtn = document.querySelector('.search-btn');
 
-//add event listener
-searchBtn.addEventListener('click', function() {
-  fetchWeatherApi();
-})
 
-function fetchWeatherApi() {
+function fetchWeatherApi(city) {
   //fetch request
-  var requestURL = 'https://home.openweathermap.org/api_keys';
+  var requestURL = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=8d43b91350520bddbdbe05651cf109c0`;
+
 
   fetch(requestURL)
     .then(function(response) {
-      return response.jason();
+      return response.json();
     })
     .then(function(data) {
-      //console.log(data)
-      fetchWeatherWithLatLon(data);
+      console.log(data)
+      //fetchWeatherWithLatLon(data);
     })
 }
+
+searchBtn.addEventListener("click", function(event) {
+  event.preventDefault();
+  //create user initials from submission
+  //clear out city once submitted
+  var inputSection = document.querySelector("#city-search");
+  var cityInput = inputSection.value.trim();
+  var userCity = {
+    city: cityInput
+  }
+  console.log(userCity);
+
+  userCity.value = ""
+  //load city look up history
+  cityLocation = JSON.parse(localStorage. getItem('city'));
+    if(userCity == null){
+      userCity =[];
+    }
+  //submit to local storage
+  localStorage.setItem("city", JSON.stringify(cityLocation));
+  //loadCityLocation();
+  var result = fetchWeatherApi(userCity.city);
+  console.log(result);
+  });
