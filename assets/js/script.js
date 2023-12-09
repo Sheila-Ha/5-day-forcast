@@ -46,7 +46,6 @@ searchBtn.addEventListener("click", function(event) {
       
       displayWeather(weatherInfo);
     });
-
   });
 });
 

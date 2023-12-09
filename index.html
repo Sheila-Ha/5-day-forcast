@@ -12,13 +12,10 @@
 </head>
 
 <body>
-   <div class="container-fluid">
-      <div class="navbar"></div>
-      <div class="row"></div>
-   </div>
-   <header>
+   <header class="container-fluid">
       <h1>5 Day Weather Forecast</h1>
    </header>
+   
    <div class="row">
       <!--search form-->
       <div class="col-3">
@@ -27,10 +24,24 @@
          <button class="search-btn">Search</button>     
       </div>
       <!--search results-->
-      <div class="col-9">
-         <div id="current">
-         </div>
+      <div class="col-4">
+         <div id="cityDetail"></div>
+            <h2 id="currentCity">
+               <img src="https://home.openweathermap.org/api_keys">
+            </h2>
+             <p>Date:</p>
+             <p>Temperature:</p>
+             <p>Humidity:</p>
+             <p>Wind Speed:</p>
+         </h2>
+      </div>
+      <div class ="col-5">
+         <h3>5-Day Forecast</h3>
          <div id="future"></div>
+            <p>Date:</p>
+            <p>Temperature:</p>
+            <p>Humidity</p>
+            <P>Wind Speed:</P>
       </div>
    </div>
    
@@ -38,6 +49,7 @@
 
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
    <script src="assets/js/script.js"></script>
+   
    
 </body>
 </html>
