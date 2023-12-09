@@ -1,57 +1,58 @@
 //Your API key is 8d43b91350520bddbdbe05651cf109c0
 //endpoint api.openweathermap.org for your API calls
 
-// var APIKey="8d43b91350520bddbdbe05651cf109c0";
+var APIKey="8d43b91350520bddbdbe05651cf109c0";
 // var queryURL="https://home.openweathermap.org/api_keys"
 
 var searchBtn = document.querySelector('.search-btn');
-
-
 
 searchBtn.addEventListener("click", function(event) {
   event.preventDefault();
   //create user initials from submission
   var inputSection = document.querySelector("#city-search");
   var cityInput = inputSection.value.trim();
-  var userCity = {
-    city: cityInput
-  }
-  console.log(userCity);
 
   //clear out city once submitted
   inputSection.value = "";
 
-  //load city look up history
-  cityLocation = JSON.parse(localStorage. getItem('city'));
-    if(userCity == null){
-      userCity =[];
-    }
-  //submit to local storage
-  localStorage.setItem("city", JSON.stringify(cityLocation));
-  //loadCityLocation();
   var weatherInfo = {
     currentWeather: [],
     futureWeather: []
   };
-  //fetching forecast weather for current city
-  fetchWeatherForecastApi(userCity.city).then(function(result) {
-    weatherInfo.futureWeather = result;
-    
-    var latitude = result.city.coord.lat;
-    var longitude = result.city.coord.lon;
+  //fetching city coordinates
+  fetchCityCoordinates(cityInput).then(function(result) {
+    if (result.length > 0) {      
+      console.log(result);
+      var latitude = result[0].lat;
+      var longitude = result[0].lon;
 
-    //fetching current weather for city
-    fetchCurrentWeatherApi(latitude, longitude).then(function(result) {
-      weatherInfo.currentWeather = result;
-      
-      displayWeather(weatherInfo);
-    });
+      //fetching current weather for city
+      fetchCurrentWeatherApi(latitude, longitude).then(function(result) {
+        console.log(result);
+        weatherInfo.currentWeather = result;
+
+        //fetching forecast weather for current city
+        fetchWeatherForecastApi(latitude, longitude).then(function(result) {
+          console.log(result);
+          weatherInfo.futureWeather = result;
+        
+          console.log(weatherInfo);
+          displayWeather(weatherInfo);
+
+          //load city look up history
+          loadCityLocation(cityInput);
+        });
+      })
+    }
+    else {
+      alert("Invalid city!")
+    }
   });
 });
 
-async function fetchWeatherForecastApi(city) {
+async function fetchCityCoordinates(city) {
   //fetch request
-  var requestURL = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=8d43b91350520bddbdbe05651cf109c0`;
+  var requestURL = `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&limit=1&appid=` + APIKey;
   var response = await fetch(requestURL);
   var result = await response.json();
   return result;
@@ -59,29 +60,85 @@ async function fetchWeatherForecastApi(city) {
 
 async function fetchCurrentWeatherApi(latitude, longitude) {
   //fetch request
-  var requestURL = `https://api.openweathermap.org/data/2.5/weather?lat=${encodeURIComponent(latitude)}&lon=${encodeURIComponent(longitude)}&units=imperial&appid=6d60041c25e2a27c932aebc09b988073`
+  var requestURL = `https://api.openweathermap.org/data/2.5/weather?lat=${encodeURIComponent(latitude)}&lon=${encodeURIComponent(longitude)}&units=imperial&appid=` + APIKey;
   var response = await fetch(requestURL);
   var result = await response.json();
   return result;
 }
+
+async function fetchWeatherForecastApi(latitude, longitude) {
+  //fetch request
+  var requestURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${encodeURIComponent(latitude)}&lon=${encodeURIComponent(longitude)}&units=imperial&appid=` + APIKey;
+  var response = await fetch(requestURL);
+  var result = await response.json();
+  return result;
+}
+
 //display current weather
 function displayWeather(weatherInfo){
   // Current
   console.log('CURRENT');
   console.log(weatherInfo.currentWeather);
+  var d = new Date(weatherInfo.currentWeather.dt * 1000);
+  $("#date").text("(" + d.toLocaleDateString() + ")");
   var windSpeed = weatherInfo.currentWeather.wind.speed;
+  $("#wind").text(windSpeed + "mph");
   //console.log(windSpeed);
   var humidity = weatherInfo.currentWeather.main.humidity;
+  $("#humidity").text(humidity + "%");
   //current temp
   var temp = weatherInfo.currentWeather.main.temp;
-  console.log(temp);
+  $("#temperature").html(temp + "&deg; F");
   //current city
   var city = weatherInfo.currentWeather.name;
-  console.log(city);
-  var icon = 'https://openweathermap.org/img/wn/' + weatherInfo.currentWeather.weather[0].icon + '@2x.png';
+  $("#currentCity").text(city);
+  //icon
+  var icon = document.createElement("img");
+  icon.src = 'https://openweathermap.org/img/wn/' + weatherInfo.currentWeather.weather[0].icon + '@2x.png';
+  document.getElementById("icon").appendChild(icon);
   // Future
   //console.log('FUTURE');
-  $(weatherInfo.futureWeather.list).each(function(){
-    //console.log(this);
+  var currentDay = 1;
+  $(weatherInfo.futureWeather.list).each(function(index){
+    console.log(this);
+    var d = new Date(this.dt * 1000);
+    //only output the noon weather
+    if (d.toLocaleTimeString() == "12:00:00 PM") {
+      // working on bringing html into script
+      /*var displayHtml = "<div>";
+      displayHtml += "<h3>" + d.toLocaleDateString() + "</h3>";
+      displayHtml +=
+      displayHtml += "</div>";
+      $(".forecast-container").append(displayHtml);*/
+      $("#day" + currentDay + " .date").text(d.toLocaleDateString());
+      $("#day" + currentDay + " .temperature").html(this.main.temp + "&deg; F");
+      $("#day" + currentDay + " .humidity").html(this.main.humidity + "%");
+      $("#day" + currentDay + " .wind").html(this.wind.speed + "mph");
+    
+      //icon
+      var icon = document.createElement("img");
+      icon.src = 'https://openweathermap.org/img/wn/' + this.weather[0].icon + '@2x.png';
+      document.getElementById("icon" + currentDay).appendChild(icon);
+
+      currentDay++;
+    }
+  });
+}
+
+function loadCityLocation(cityInput) {
+  var cityLocation = JSON.parse(localStorage.getItem("cities"))||[];
+  if (!cityLocation.includes(cityInput)) {
+    cityLocation.push(cityInput);
+    //submit to local storage
+    localStorage.setItem("cities", JSON.stringify(cityLocation));
+  }
+
+  $("#cities").html("");
+  $(cityLocation).each(function(){
+    var button = document.createElement("button");
+    button.innerText = this;
+    document.getElementById("cities").appendChild(button);
+    //TODO add functionality when these buttons are clicked
+    //TODO style buttons
   });
 }

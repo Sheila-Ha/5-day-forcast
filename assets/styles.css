@@ -37,14 +37,26 @@ button {
 
 
 
-.col-3 {
+.search {
+  padding: 20px;
   background: rgb(127, 167, 246);
 }
 
-.col-4 {
+.weather {
+  padding: 0;
+}
+
+.today {
+  padding: 20px;
   background: rgb(247, 212, 149);
 }
 
-.col-5 {
+.forecast {
+  padding: 20px;
   background: rgb(246, 140, 140);
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: space-between;
 }
