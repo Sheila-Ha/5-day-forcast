@@ -2,10 +2,9 @@
 
 
 ## Description
-  - You are going to experience a 5 day weather dashboard that will run in the browser 
+  - A personal experience to search a city for the weather forecast for present day and future of 5 days ahead. Your cities search wil be stored in local storage for you to click and revisit again.
 
     
-
   ### User Story
     - AS A traveler
     - I WANT to see the weather outlook for multiple cities
@@ -22,15 +21,27 @@
     - WHEN I click on a city in the search history
     - THEN I am again presented with current and future conditions for that city
 
-  ## What you are expected to see on your screen
+  ## What you see as you navigate the app
 
-  * A asdfasf
+  * [Video of how the app works](https://app.screencast.com/i3ppkrNQ7Xtvw)
 
-  * A afdsdf
 
-## Errors to navigate
+  * Total view before city input
+   ![Alt text](image.png)
+      *Mobile response total view
+        ![Alt text](image-5.png)
+  * Input city select "search" and click
+    ![Alt text](image-1.png)
+  * Total view after city input
+    ![Alt text](image-2.png)
+      *Mobile response city search
+       
+  * Local storage, showing previously searched cities
+    ![Alt text](image-3.png)
+
   - Google font error
     ![Alt text](assets/images/googlefont_error.png)
+
 
 ## Installation:
   - ### Create a new repo on GitHub
@@ -51,9 +62,11 @@
 
 
   - ### Navigation
-      - Navigate to the folder in which you cloned your repo
-      - Click on index.html file
-      - Double click to open file
+      - Go to the site provided below
+      - [my weather app](file:///C:/Users/slhan/repos/5-day-forecast/index.html)
+      - Type a City in the search field
+      - Click search
+      - 
 
 ## Features:
   - Weather information for city searched
@@ -88,3 +101,4 @@ The guide used:
 
 ## License:
   - By contributing, you agree that your contribution wil be licensed under its MIT License.
+  
