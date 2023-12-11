@@ -95,26 +95,19 @@ function displayWeather(weatherInfo){
   //current city
   var city = weatherInfo.currentWeather.name;
   $("#currentCity").text(city);
-
-  
  //clear any previous image from container
   $("#icon").html("");
-
   //icon to display for weather
   var icon = document.createElement("img");
   icon.src = 'https://openweathermap.org/img/wn/' + weatherInfo.currentWeather.weather[0].icon + '@2x.png';
   document.getElementById("icon").appendChild(icon);
- 
-  // var icon =  document.querySelector(".search-btn");
-  // icon.value = "";
-  
-
-
   // Future
   console.log('FUTURE');
+
   var currentDay = 1;
   $(weatherInfo.futureWeather.list).each(function(index){
     console.log(this);
+    //creating a date object
     var d = new Date(this.dt * 1000);
     //only output the noon weather
     if (d.toLocaleTimeString() == "12:00:00 PM") {
@@ -132,7 +125,7 @@ function displayWeather(weatherInfo){
       //clear any previous image from container
       $("#icon" + currentDay).html("");
 
-      //icon
+      //creating icon object
       var icon = document.createElement("img");
       icon.src = 'https://openweathermap.org/img/wn/' + this.weather[0].icon + '@2x.png';
       document.getElementById("icon" + currentDay).appendChild(icon);
@@ -141,20 +134,21 @@ function displayWeather(weatherInfo){
     }
   });
 }
-
+//fetch city from api
 function loadCityLocation(cityInput) {
   var cityLocation = JSON.parse(localStorage.getItem("cities"))||[];
   if (!cityLocation.includes(cityInput)) {
     cityLocation.push(cityInput);
-    //submit to local storage
+    //submit and save to local storage
     localStorage.setItem("cities", JSON.stringify(cityLocation));
     //local storage to hold 5 past cities
   // if (loadCityLocation.length > 5) {
   //   loadCityLocation = loadCityLocation.slice(0,5);
   // }
   }
-
+//jquery to clear out city on search
   $("#cities").html("");
+//jquery create buttons for local storage (city buttons)
   $(cityLocation).each(function(){
     var button = document.createElement("button");
     button.innerText = this;
@@ -163,19 +157,7 @@ function loadCityLocation(cityInput) {
       inputSection.value = this.innerText;
       searchClick();
     });
+    //adding button to page
     document.getElementById("cities").appendChild(button);
-//TODO add functionality when these buttons are clicked
-    //attach a click event listener to each button
-    //  button.addEventListener("click", function () {
-      // handle the click event
-      // console.log("Button clicked for city search", city);
-    // })
-
-    //TODO when click city in history present weather
-// function clearIcon
-
-
-
-    //TODO style buttons
   });
 }
