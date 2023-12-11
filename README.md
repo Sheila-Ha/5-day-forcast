@@ -94,7 +94,7 @@
   
 ## Location to view:
   - https://sheila-ha.github.io/5-day-forecast/
-  - https://github.com/Sheila-Ha/5-day-forecast
+  - https://github.com/Sheila-Ha/5-day-forecast.git
 
 ## Credits:
 The guides used:
