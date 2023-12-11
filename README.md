@@ -27,9 +27,9 @@
 
 
   * Total view before city input
-   ![Alt text](image.png)
+   ![Alt text](image-1.png)
       *Mobile response total view
-        ![Alt text](image-8.png)
+      ![Alt text](image-8.png)
   * Input city select "search" and click
     ![Alt text](image-1.png)
   * Total view after city input
