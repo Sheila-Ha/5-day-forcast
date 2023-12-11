@@ -2,7 +2,7 @@
 
 
 ## Description
-  - A personal experience to search a city for the weather forecast for present day and future of 5 days ahead. Your cities search wil be stored in local storage for you to click and revisit again.
+  - Welcome to my 5 day weather app. Here you will search for a city and be given the current weather and the future weather. With this knowledge you will be able to plan all your outings accordingly.
 
     
   ### User Story
@@ -27,17 +27,19 @@
 
 
   * Total view before city input
-   ![Alt text](image-1.png)
+   ![Alt text](assets/images/first-view.png)
       *Mobile response total view
-      ![Alt text](image-8.png)
+
+      ![Alt text](assets/images/mobile-total-view.png)
   * Input city select "search" and click
-    ![Alt text](image-1.png)
+    ![Alt text](assets/images/input-city-click-search.png)
   * Total view after city input
-    ![Alt text](image-2.png)
+    ![Alt text](assets/images/total-view-of-city-input.png)
       *Mobile response city search
-       ![Alt text](image-7.png)
+      
+       ![Alt text](assets/images/mobile-city-search.png)
   * Local storage, showing previously searched cities
-    ![Alt text](image-3.png)
+    ![Alt text](assets/images/local-storage.png)
 
   - An example of an error that was navigated with Google fonts 
     ![Alt text](assets/images/googlefont_error.png)
@@ -57,7 +59,7 @@
       - git clone https://github.com/YOUR-USERNAME/YOURREPOSITORY
           - Your command line should respond as below.
 
-          ![Alt text](image-10.png)
+          ![Alt text](assets/images/clone.png)
         
 
 
