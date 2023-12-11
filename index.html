@@ -12,74 +12,74 @@
 </head>
 
 <body>
-   <header class="container-fluid">
+   <header>
       <h1>5 Day Weather Forecast</h1>
    </header>
-   
-   <div class="row">
-      <!--search form-->
-      <div class="col-3 search">
-         <label for="city-search">City Search:</label>
-         <input type="search" id="city-search"/>
-         <button class="search-btn">Search</button>
-         <div id="cities"></div>
-      </div>
-      <!--search results-->
-      <div class="col-9 weather">
-         <div class="today">
-            <div id="cityDetail"></div>
-            <h2>
-               <span id="currentCity"></span>
-               <span id="date"></span>
-               <span id="icon"></span>
-            </h2>
-             <p>Temperature: <span id="temperature"></span></p>
-             <p>Humidity: <span id="humidity"></span></p>
-             <p>Wind Speed: <span id="wind"></span></p>
+   <div class="container">
+      <div class="row">
+         <!--search form-->
+         <div class="col-md-4 search">
+            <label for="city-search">City Search:</label>
+            <input type="search" id="city-search" placeholder="City"/>
+            <button class="search-btn">Search</button>
+            <div id="cities"></div>
          </div>
-         <div class="forecast">
-            <h3>5-Day Forecast</h3>
-            <div class="forecast-container">
-               <div id="day1">
-                  <h3 class="date"></h3>
-                  <span id="icon1"></span>
-                  <p>Temperature: <span class="temperature"></span></p>
-                  <p>Humidity <span class="humidity"></span></p>
-                  <p>Wind Speed: <span class="wind"></span></p>
-               </div>
-               <div id="day2">
-                  <h3 class="date"></h3>
-                  <span id="icon2"></span>
-                  <p>Temperature: <span class="temperature"></span></p>
-                  <p>Humidity <span class="humidity"></span></p>
-                  <p>Wind Speed: <span class="wind"></span></p>
-               </div>
-               <div id="day3">
-                  <h3 class="date"></h3>
-                  <span id="icon3"></span>
-                  <p>Temperature: <span class="temperature"></span></p>
-                  <p>Humidity <span class="humidity"></span></p>
-                  <p>Wind Speed: <span class="wind"></span></p>
-               </div>
-               <div id="day4">
-                  <h3 class="date"></h3>
-                  <span id="icon4"></span>
-                  <p>Temperature: <span class="temperature"></span></p>
-                  <p>Humidity <span class="humidity"></span></p>
-                  <p>Wind Speed: <span class="wind"></span></p>
-               </div>
-               <div id="day5">
-                  <h3 class="date"></h3>
-                  <span id="icon5"></span>
-                  <p>Temperature: <span class="temperature"></span></p>
-                  <p>Humidity <span class="humidity"></span></p>
-                  <p>Wind Speed: <span class="wind"></span></p>
-               </div>
+         <!--search results-->
+         <div class="col-md-8 weather">
+            <div id="cityDetail">
+               <h2>Current</h2>
+               <h3>
+                  <span id="icon"></span>
+                  <span id="currentCity"></span>
+                  <span id="date"></span>
+               </h3>
+               <p>Temperature: <span id="temperature"></span></p>
+               <p>Humidity: <span id="humidity"></span></p>
+               <p>Wind Speed: <span id="wind"></span></p>
             </div>
-         </div>   
-      </div>
-   </div>   
-
+            <div class="forecast">
+               <h2>5-Day Forecast</h2>
+               <div class="forecast-container">
+                  <div id="day1">
+                     <h3 class="date"></h3>
+                     <span id="icon1"></span>
+                     <p>Temperature: <span class="temperature"></span></p>
+                     <p>Humidity <span class="humidity"></span></p>
+                     <p>Wind Speed: <span class="wind"></span></p>
+                  </div>
+                  <div id="day2">
+                     <h3 class="date"></h3>
+                     <span id="icon2"></span>
+                     <p>Temperature: <span class="temperature"></span></p>
+                     <p>Humidity <span class="humidity"></span></p>
+                     <p>Wind Speed: <span class="wind"></span></p>
+                  </div>
+                  <div id="day3">
+                     <h3 class="date"></h3>
+                     <span id="icon3"></span>
+                     <p>Temperature: <span class="temperature"></span></p>
+                     <p>Humidity <span class="humidity"></span></p>
+                     <p>Wind Speed: <span class="wind"></span></p>
+                  </div>
+                  <div id="day4">
+                     <h3 class="date"></h3>
+                     <span id="icon4"></span>
+                     <p>Temperature: <span class="temperature"></span></p>
+                     <p>Humidity <span class="humidity"></span></p>
+                     <p>Wind Speed: <span class="wind"></span></p>
+                  </div>
+                  <div id="day5">
+                     <h3 class="date"></h3>
+                     <span id="icon5"></span>
+                     <p>Temperature: <span class="temperature"></span></p>
+                     <p>Humidity <span class="humidity"></span></p>
+                     <p>Wind Speed: <span class="wind"></span></p>
+                  </div>
+               </div>
+            </div>   
+         </div>
+      </div>   
+   </div>
 
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
    <script src="assets/js/script.js"></script>

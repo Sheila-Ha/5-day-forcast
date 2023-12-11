@@ -4,12 +4,15 @@
 var APIKey="8d43b91350520bddbdbe05651cf109c0";
 // var queryURL="https://home.openweathermap.org/api_keys"
 
+var inputSection = document.querySelector("#city-search");
 var searchBtn = document.querySelector('.search-btn');
 
 searchBtn.addEventListener("click", function(event) {
   event.preventDefault();
-  //create user initials from submission
-  var inputSection = document.querySelector("#city-search");
+  searchClick();
+});
+
+function searchClick() {
   var cityInput = inputSection.value.trim();
 
   //clear out city once submitted
@@ -47,8 +50,8 @@ searchBtn.addEventListener("click", function(event) {
     else {
       alert("Invalid city!")
     }
-  });
-});
+  });  
+}
 
 async function fetchCityCoordinates(city) {
   //fetch request
@@ -92,12 +95,23 @@ function displayWeather(weatherInfo){
   //current city
   var city = weatherInfo.currentWeather.name;
   $("#currentCity").text(city);
-  //icon
+
+  
+ //clear any previous image from container
+  $("#icon").html("");
+
+  //icon to display for weather
   var icon = document.createElement("img");
   icon.src = 'https://openweathermap.org/img/wn/' + weatherInfo.currentWeather.weather[0].icon + '@2x.png';
   document.getElementById("icon").appendChild(icon);
+ 
+  // var icon =  document.querySelector(".search-btn");
+  // icon.value = "";
+  
+
+
   // Future
-  //console.log('FUTURE');
+  console.log('FUTURE');
   var currentDay = 1;
   $(weatherInfo.futureWeather.list).each(function(index){
     console.log(this);
@@ -115,6 +129,9 @@ function displayWeather(weatherInfo){
       $("#day" + currentDay + " .humidity").html(this.main.humidity + "%");
       $("#day" + currentDay + " .wind").html(this.wind.speed + "mph");
     
+      //clear any previous image from container
+      $("#icon" + currentDay).html("");
+
       //icon
       var icon = document.createElement("img");
       icon.src = 'https://openweathermap.org/img/wn/' + this.weather[0].icon + '@2x.png';
@@ -131,14 +148,34 @@ function loadCityLocation(cityInput) {
     cityLocation.push(cityInput);
     //submit to local storage
     localStorage.setItem("cities", JSON.stringify(cityLocation));
+    //local storage to hold 5 past cities
+  // if (loadCityLocation.length > 5) {
+  //   loadCityLocation = loadCityLocation.slice(0,5);
+  // }
   }
 
   $("#cities").html("");
   $(cityLocation).each(function(){
     var button = document.createElement("button");
     button.innerText = this;
+    button.addEventListener("click", function(event) {
+      event.preventDefault();
+      inputSection.value = this.innerText;
+      searchClick();
+    });
     document.getElementById("cities").appendChild(button);
-    //TODO add functionality when these buttons are clicked
+//TODO add functionality when these buttons are clicked
+    //attach a click event listener to each button
+    //  button.addEventListener("click", function () {
+      // handle the click event
+      // console.log("Button clicked for city search", city);
+    // })
+
+    //TODO when click city in history present weather
+// function clearIcon
+
+
+
     //TODO style buttons
   });
 }

@@ -56,9 +56,10 @@
       - Double click to open file
 
 ## Features:
-  - Weather information by current location
+  - Weather information for city searched
   - 5 day weather forecast
-  - 
+  - Weather information seen temp, humidity, wind speed
+  - Weather icon displayed for current and 5 day weather
   
 
 ## Built with and deployed with:
@@ -72,8 +73,9 @@
   - GitHub
   
 ## Usage:
-  - On your machine navigate to the folder you created.
-  - Locate the Index.html file in your browser.
+
+
+## Location to view:
   - https://sheila-ha.github.io/5-day-forecast/
   - https://github.com/Sheila-Ha/5-day-forecast
 
@@ -81,7 +83,8 @@
 The guide used:
  - [request-response](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys)
  - [font-awesome](https://fontawesome.com/search?q=cloud&o=r)
-
+ - [openweather](https://openweathermap.org/current)
+ - [gradient-gen](https://omatsuri.app/gradient-generator)
 
 ## License:
   - By contributing, you agree that your contribution wil be licensed under its MIT License.
