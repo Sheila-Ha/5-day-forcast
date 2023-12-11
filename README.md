@@ -29,17 +29,17 @@
   * Total view before city input
    ![Alt text](image.png)
       *Mobile response total view
-        ![Alt text](image-5.png)
+        ![Alt text](image-8.png)
   * Input city select "search" and click
     ![Alt text](image-1.png)
   * Total view after city input
     ![Alt text](image-2.png)
       *Mobile response city search
-       
+       ![Alt text](image-7.png)
   * Local storage, showing previously searched cities
     ![Alt text](image-3.png)
 
-  - Google font error
+  - An example of an error that was navigated with Google fonts 
     ![Alt text](assets/images/googlefont_error.png)
 
 
@@ -57,7 +57,7 @@
       - git clone https://github.com/YOUR-USERNAME/YOURREPOSITORY
           - Your command line should respond as below.
 
-          ![Alt text](assets/image.png)
+          ![Alt text](image-10.png)
         
 
 
@@ -66,13 +66,18 @@
       - [my weather app](file:///C:/Users/slhan/repos/5-day-forecast/index.html)
       - Type a City in the search field
       - Click search
-      - 
+      - Viewing, current weather first
+      - scroll down and the 5 day weather forecast follow
+      - Return to city search and enter another city and click search
+      - Below city input field will be past cities you have submitted
+      - You may click on a submitted city and it will show current and future weather again
 
 ## Features:
   - Weather information for city searched
   - 5 day weather forecast
   - Weather information seen temp, humidity, wind speed
   - Weather icon displayed for current and 5 day weather
+  - Responsive for all different screen sizes
   
 
 ## Built with and deployed with:
@@ -85,19 +90,20 @@
   - Git Bash
   - GitHub
   
-## Usage:
-
-
 ## Location to view:
   - https://sheila-ha.github.io/5-day-forecast/
   - https://github.com/Sheila-Ha/5-day-forecast
 
 ## Credits:
-The guide used:
+The guides used:
  - [request-response](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys)
+ - [W3shcools](https://www.w3schools.com/tags/default.asp)
+ - [mdn web docs](https://developer.mozilla.org/en-US/docs/Web)
+ - [stack overflow](https://stackoverflow.com/?newreg=67d94556b887449fa2885dadf54a5439)
  - [font-awesome](https://fontawesome.com/search?q=cloud&o=r)
  - [openweather](https://openweathermap.org/current)
  - [gradient-gen](https://omatsuri.app/gradient-generator)
+ - [Capture, video made with](https://www.techsmith.com/jing-tool.html)
 
 ## License:
   - By contributing, you agree that your contribution wil be licensed under its MIT License.
