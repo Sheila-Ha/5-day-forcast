@@ -55,7 +55,7 @@ function searchClick() {
 
 async function fetchCityCoordinates(city) {
   //fetch request
-  var requestURL = `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&limit=1&appid=` + APIKey;
+  var requestURL = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&limit=1&appid=` + APIKey;
   var response = await fetch(requestURL);
   var result = await response.json();
   return result;
