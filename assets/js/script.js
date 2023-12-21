@@ -103,36 +103,28 @@ function displayWeather(weatherInfo){
   document.getElementById("icon").appendChild(icon);
   // Future
   console.log('FUTURE');
-
-  var currentDay = 1;
-  $(weatherInfo.futureWeather.list).each(function(index){
-    console.log(this);
+  console.log(weatherInfo.futureWeather.list);
+  for (var i = 0; i < 5; i++) {
+    var currentDay = i + 1;
+    //the list has 40 items so output every 8 to get 5 days (8*5=40)
+    var futureWeatherDay = weatherInfo.futureWeather.list[i * 8];
+    console.log(futureWeatherDay);
     //creating a date object
-    var d = new Date(this.dt * 1000);
-    //only output the noon weather
-    if (d.toLocaleTimeString() == "12:00:00 PM") {
-      // working on bringing html into script
-      /*var displayHtml = "<div>";
-      displayHtml += "<h3>" + d.toLocaleDateString() + "</h3>";
-      displayHtml +=
-      displayHtml += "</div>";
-      $(".forecast-container").append(displayHtml);*/
-      $("#day" + currentDay + " .date").text(d.toLocaleDateString());
-      $("#day" + currentDay + " .temperature").html(this.main.temp + "&deg; F");
-      $("#day" + currentDay + " .humidity").html(this.main.humidity + "%");
-      $("#day" + currentDay + " .wind").html(this.wind.speed + "mph");
-    
-      //clear any previous image from container
-      $("#icon" + currentDay).html("");
+    var d = new Date(futureWeatherDay.dt * 1000);
+    console.log(d.toLocaleTimeString());
+    $("#day" + currentDay + " .date").text(d.toLocaleDateString());
+    $("#day" + currentDay + " .temperature").html(futureWeatherDay.main.temp + "&deg; F");
+    $("#day" + currentDay + " .humidity").html(futureWeatherDay.main.humidity + "%");
+    $("#day" + currentDay + " .wind").html(futureWeatherDay.wind.speed + "mph");
+  
+    //clear any previous image from container
+    $("#icon" + currentDay).html("");
 
-      //creating icon object
-      var icon = document.createElement("img");
-      icon.src = 'https://openweathermap.org/img/wn/' + this.weather[0].icon + '@2x.png';
-      document.getElementById("icon" + currentDay).appendChild(icon);
-
-      currentDay++;
-    }
-  });
+    //creating icon object
+    var icon = document.createElement("img");
+    icon.src = 'https://openweathermap.org/img/wn/' + futureWeatherDay.weather[0].icon + '@2x.png';
+    document.getElementById("icon" + currentDay).appendChild(icon);
+  }
 }
 //fetch city from api
 function loadCityLocation(cityInput) {
